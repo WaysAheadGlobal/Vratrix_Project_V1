@@ -1,0 +1,43 @@
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .fade-in-active {
+    opacity: 1;
+  }
+
+  .accodion_custom {
+    margin: 0;
+    margin-top: 30px;
+  }
+  
+.head h3 {
+  color: #141414;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 120%; 
+  letter-spacing: -0.96px;
+  text-align: center;margin-bottom: 10px;
+}
+
+.head h3 span { 
+  color: #8B3DFF;
+}
+
+.head p {
+  color: #6F6B6B;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%; 
+}
+.head p span{display: block;}
+.accodion_custom .ac_item.Mui-expanded {
+  border: 1px solid #8B3DFF;
+}
+
+.accodion_custom .ac_item.Mui-expanded .ac_head_cont {
+  color: #8B3DFF;
+  font-weight: 600;
+}
