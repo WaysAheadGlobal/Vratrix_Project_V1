@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import bg from "../images/login.png";
 import api from "../Api.js";
+import "../output.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -50,12 +51,8 @@ function Login() {
         if (response.data.status === 0) {
           return false;
         }
-        const userCookie = response.headers["set-cookie"];
-        console.log("Logged In Succesfully");
-        window.location.href = "/";
-        if (userCookie) {
-          localStorage.setItem("userCookie", userCookie);
-        }
+        document.cookie = `user_id=${response.data.user}`;
+        window.location.href = "/dashboard";
       } else {
         setError("Invalid credentials");
       }
@@ -65,14 +62,15 @@ function Login() {
   };
 
   return (
-    <>
-      <div className="w-full h-screen flex justify-center items-center">
-        <img src={bg} className="absolute w-screen h-screen"></img>
-        <div className="bg-white md:w-1/4  space-y-8 rounded-xl p-4 shadow-xl shadow-white z-10">
+    <div className="w-full h-screen flex justify-center items-center bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `url(${bg})`,
+    }}>
+        {/* <img src={bg} className="absolute w-screen h-screen"></img> */}
+        <div className="bg-white md:w-2/6  space-y-8 rounded-xl p-4 shadow-xl shadow-white z-10">
           <h1 className="font-semibold text-center text-4xl">Welcome Back</h1>
           {error && (
             <div
-              className={`fixed bottom-5  z-20 right-5 bg-white py-2 text-sm ${
+              className={`fixed bottom-5  z-20 right-5 bg-white py-4 text-sm ${
                 error ? "opacity-100" : "opacity-0"
               } p-3 flex transition-all duration-700  items-center shadow-xl border-4 rounded-md border-red-500`}
             >
@@ -92,7 +90,7 @@ function Login() {
           )}
           <form onSubmit={handleLogin} className="">
             <div className="flex space-y-2 flex-col">
-              <label for="email" className="px-2 font-light">
+              <label htmlFor="email" className="px-2 font-light">
                 Email ID
               </label>
               <input
@@ -101,25 +99,25 @@ function Login() {
                 name="email"
                 id="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="border-2 border-gray-300 rounded-md shadow-md"
+                onChange={(e) => setEmail(e.target.value)} placeholder="john.mark@gmail.com" 
+                className="border-2 px-2 py-1 border-gray-300 rounded-md shadow-md"
               ></input>
             </div>
-            <div className="flex justify-between  my-5">
+            <div className="flex justify-between  my-5 ">
               <div className="flex space-x-1">
                 <input
-                  className={`w-20 h-6 rounded-md bg-[#8B3DFF1a] border border-[#8B3DFF] text-center ${
+                  className={`w-20 h-6 rounded-md bg-[#8B3DFF1a] border border-[#8B3DFF]  text-center ${
                     !isOtpSent && "bg-gray-200 cursor-not-allowed"
-                  } transition-all duration-300`}
+                  } transition-all duration-300 `}
                   value={otp}
                   onChange={(e) => setotp(e.target.value)}
                   type="text"
-                  placeholder="* * * * "
+                  placeholder="* * * *"
                   required
                   maxLength={4}
                 ></input>
               </div>
-              <div className="font-light">
+              <div className="font-light text-sm">
                 {!isOtpSent ? (
                   <button onClick={sendOtp} type="button">
                     <a>Send OTP</a>
@@ -137,8 +135,8 @@ function Login() {
                 Login
               </button>
               <p className="font-light text-sm text-center inline-flex w-full justify-center">
-                Enter login details or
-                <Link to="/sign-up" className="text-[#8B3Dff] px-1">
+                Enter Login Details Or
+                <Link to="/sign-up" className="font-bold text-[#8B3Dff] px-1">
                   Create an account.{" "}
                 </Link>
               </p>
@@ -146,7 +144,6 @@ function Login() {
           </form>
         </div>
       </div>
-    </>
   );
 }
 

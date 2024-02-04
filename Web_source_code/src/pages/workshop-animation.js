@@ -1,11 +1,25 @@
 import React from 'react';
-import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import Icon from '../images/icon12.png'; // Make sure the path is correct
 import HeaderIcon from '../images/icon13.png'; // Make sure the path is correct
-import Icon1 from '../images/icon14.png'; // Make sure the path is correct
 
-const Workshop = () => {
+const Animation = () => {
+  const customUnderlineStyle = {
+    position: 'relative',
+    display: 'inline-block',
+  };
+
+  const customUnderlineAfterStyle = {
+    content: '""',
+    position: 'absolute',
+    bottom: '-2px',
+    left: '0',
+    right: '0',
+    height: '1px',
+    backgroundColor: 'white',
+    width: '110%', // Adjust the width as needed
+    marginLeft: '-5%', // Center the underline
+  };
   return (
     <div className="flex h-screen bg-white">
       {/* Left Sidebar */}
@@ -17,13 +31,13 @@ const Workshop = () => {
         </Link>
         {/* Scene with hover effect */}
         <div className="border-b border-gray-600 pb-4 cursor-pointer pt-10">
-          <Link to="/workshop" className="text-yellow-500 text-lg cursor-pointer">
+          <Link to="/workshop" className="text-white hover:text-yellow-500 text-lg cursor-pointer">
             Scene
           </Link>
         </div>
         {/* Animation: Disabled */}
         <div className="border-b border-gray-600 pb-4 cursor-pointer">
-          <Link to="/animation" className="text-white hover:text-yellow-500  text-lg cursor-pointer">
+          <Link to="/animation" className="text-yellow-500  text-lg cursor-pointer">
             Animation
           </Link>
         </div>
@@ -69,8 +83,8 @@ const Workshop = () => {
         <div className="flex flex-grow">
           {/* WebGL Unity iFrame */}
           <iframe
-            title='Scene'
-            src="https://poc.vratrix.waysdatalabs.com/webgl?scene_name=scene"
+            title='Animation'
+            src="https://poc.vratrix.waysdatalabs.com/webgl/"
             className="bg-gray-300 rounded-2xl"
             style={{ flex: 1, height: 'calc(100vh - 5rem)' }} // Adjust the height if necessary
             frameBorder="0"
@@ -79,23 +93,21 @@ const Workshop = () => {
           {/* Right Sidebar */}
           <div className="w-1/7 bg-gray-800 p-6 flex flex-col items-center">
             {/* Characters Text slightly above */}
-            <div className="border-b border-gray-600 pb-4 cursor-pointer mt-[-2rem]"> {/* Adjusted margin-top to 8 */}
-              <Link to="/workshop" className="text-white text-lg text-[18px] tracking-wider cursor-pointer">
-                Characters
+            <div className="border-b border-gray-400 pb-4 cursor-pointer mt-[-2rem]"> {/* Adjusted margin-top to 8 */}
+              <Link to="/workshop1" className="text-white text-lg text-[18px] tracking-wider cursor-pointer">
+                Gestures
               </Link>
             </div>
 
-            {/* Character Icons */}
-            <div className="my-2 flex flex-col items-center justify-center">
-              {[...Array(4)].map((_, index) => (
-                <img key={index} src={Icon} alt="Icon" className="my-2 w-20 h-18" />
-              ))}
+            <div className="border-b border-gray-400 pb-4 cursor-pointer mt-80"> {/* Adjusted margin-top to 8 */}
+              <Link to="/workshop1" className="text-white text-lg text-[18px] tracking-wider cursor-pointer">
+                Audio
+              </Link>
             </div>
 
-            {/* Additional Icon */}
-            <div className="flex flex-col items-center justify-center">
-              <img src={Icon1} alt="Icon1" className="my-1 w-20 h-18" />
-            </div>
+
+
+
           </div>
         </div>
       </div>
@@ -103,4 +115,4 @@ const Workshop = () => {
   );
 };
 
-export default Workshop;
+export default Animation;

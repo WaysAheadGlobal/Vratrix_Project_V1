@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
+const { Server } = require("socket.io");
+const http = require("http");
 
 const port = 8000;
 
@@ -37,6 +39,20 @@ app.use(
     cookie: { secure: true },
   })
 );
+
+const httpServer = http.createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+  },
+});
+
+io.on("connection", (socket) => {
+  socket.on("button-clicked", (data) => {
+    /* console.log("Button clicked on client side", data); */
+    socket.broadcast.emit("button-clicked-webgl", data);
+  });
+});
 
 //-------------------------------------------DATABASE CONNECTION----------------------------------------------------
 
@@ -192,7 +208,6 @@ app.post("/signup/otp", async (req, res) => {
           .slice(0, 19)
           .replace("T", " ");
 
-        console.log("Email sent:", info.response);
         const saveOTPQuery =
           "INSERT INTO users (otp, email_verified_at, email) VALUES (?, ?, ?)";
         db.query(
@@ -411,7 +426,17 @@ app.post("/signup", (req, res) => {
             if (updateError) {
               return res.json(updateError);
             } else {
-              res.json("Signed Up successfully");
+              db.query('select user_id from users where email = ?', [req.body.email], (err, result) => {
+                if (err) {
+                  res.status(500).send("Error retrieving user_id from database");
+                  throw err;
+                }
+                return res.json({
+                  message: "Signed Up successfully",
+                  user: result[0].user_id,
+                  success: true,
+                });
+              });
             }
           }
         );
@@ -460,7 +485,7 @@ app.post("/subscription/:user_id", (req, res) => {
       // For other subscription values, update both subscription and sub_expires_at
       const subExpiresAt =
         (newSubscription >= 1 && newSubscription <= 3) ||
-        (newSubscription >= 6 && newSubscription <= 9)
+          (newSubscription >= 6 && newSubscription <= 9)
           ? calculateExpiration()
           : null;
       updateSubscriptionQuery =
@@ -505,7 +530,7 @@ app.get("/subscription", (req, res) => {
   });
 });
 
-app.get("/models", (req, res) => {
+app.get("/old/models", (req, res) => {
   const fetchModelsQuery = "SELECT * FROM models";
 
   db.query(fetchModelsQuery, (error, results) => {
@@ -518,7 +543,8 @@ app.get("/models", (req, res) => {
   });
 });
 
-app.post("/models", (req, res) => {
+
+app.post("/old/models", (req, res) => {
   const modelCollection = req.body.modelcollection;
 
   if (!modelCollection || !Array.isArray(modelCollection)) {
@@ -555,6 +581,127 @@ app.post("/models", (req, res) => {
   });
 });
 
-app.listen(port, () => {
+
+// new endpoints
+
+app.get("/models", (req, res) => {
+  db.query(
+    "SELECT * FROM models where scene_name = ?",
+    [req.query.scene_name],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error retrieving models from database");
+        return;
+      }
+      const models = [];
+      for (const model of result) {
+        const temp = {};
+        for (const key in model) {
+          if (key.includes("position")) {
+            temp.position = {
+              ...temp.position,
+              [key.split("_")[1]]: model[key],
+            };
+          } else if (key.includes("rotation")) {
+            temp.rotation = {
+              ...temp.rotation,
+              [key.split("_")[1]]: model[key],
+            };
+          } else if (key.includes("scale")) {
+            temp.scale = {
+              ...temp.scale,
+              [key.split("_")[1]]: model[key],
+            };
+          } else if (key === "model_name") {
+            temp[key] = model[key];
+          }
+        }
+        models.push(temp);
+      }
+      res.status(200).json({
+        scene_name: req.query.scene_name,
+        modelcollection: models
+      });
+    }
+  );
+});
+
+
+app.post("/models", (req, res) => {
+  const { modelcollection, scene_name } = req.body;
+
+  let query = "INSERT INTO models(scene_name, model_name, position_x, position_y, position_z, rotation_x, rotation_y, rotation_z, scale_x, scale_y, scale_z) VALUES ";
+
+  for (const model of modelcollection) {
+    const { model_name, position, rotation, scale } = model;
+    if (!model_name || !position || !rotation || !scale) {
+      res.status(500).send('Invalid request format');
+      return;
+    }
+
+    query += `('${scene_name}', '${model_name}', ${position.x}, ${position.y}, ${position.z}, ${rotation.x}, ${rotation.y}, ${rotation.z}, ${scale.x}, ${scale.y}, ${scale.z}),`;
+  }
+
+  query = query.slice(0, -1);
+
+  db.query(
+    query,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Error adding model to database');
+        return;
+      }
+
+      res.status(201).send('Model added to database');
+    }
+  );
+});
+
+app.delete("/models", (req, res) => {
+  db.query('DELETE FROM models WHERE scene_name = ?', [req.query.scene_name], (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error deleting model from database');
+      return;
+    }
+
+    res.status(200).send('Model deleted from database');
+  });
+});
+
+app.get("/models/scene-names", (req, res) => {
+  db.query('SELECT DISTINCT scene_name FROM models ORDER BY createdAt DESC', (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error retrieving scene names from database');
+      return;
+    }
+
+    const sceneNames = result.map(scene => scene.scene_name);
+    res.status(200).json(sceneNames);
+  });
+})
+
+app.get("/models/scene-names-details", (req, res) => {
+  let query;
+  if (req.query.limit) {
+    query = `SELECT DISTINCT scene_name, createdAt FROM models ORDER BY createdAt DESC LIMIT ${req.query.limit}`;
+  } else {
+    query = 'SELECT DISTINCT scene_name, createdAt FROM models ORDER BY createdAt DESC';
+  }
+
+  db.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('Error retrieving scene names from database');
+      return;
+    }
+    res.status(200).json(result);
+  });
+})
+
+httpServer.listen(port, () => {
   console.log(`listening on port: ${port}`);
 });

@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
-import moment from "moment";
-import Cookies from "js-cookie";
-import api from "../Api.js";
-import { Link } from "react-router-dom";
-import "../style/main.css";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import Cookies from "js-cookie";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+import api from "../Api.js";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 import plan1 from "../images/plan1.png";
 import plan2 from "../images/plan2.png";
 import background from "../images/plans.png";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
+import "../output.css";
+import "../style/main.css";
 
 export default function Home() {
   const [plan, setPlan] = useState(0);
@@ -107,25 +105,22 @@ export default function Home() {
             <div className="flex flex-col space-y-3">
               <button
                 onClick={() => setPlan(0)}
-                className={`border border-[#8B3DFF] ${
-                  plan === 0 ? "bg-[#8B3DFF] text-white" : ""
-                } px-4 p-2 rounded-md`}
+                className={`border border-[#8B3DFF] ${plan === 0 ? "bg-[#8B3DFF] text-white" : ""
+                  } px-4 p-2 rounded-md`}
               >
                 Subscription
               </button>
               <button
                 onClick={() => setPlan(1)}
-                className={`border border-[#8B3DFF] ${
-                  plan === 1 ? "bg-[#8B3DFF] text-white" : ""
-                } px-4 p-2 rounded-md`}
+                className={`border border-[#8B3DFF] ${plan === 1 ? "bg-[#8B3DFF] text-white" : ""
+                  } px-4 p-2 rounded-md`}
               >
                 Consultation
               </button>
               <button
                 onClick={() => setPlan(2)}
-                className={`border border-[#8B3DFF] ${
-                  plan === 2 ? "bg-[#8B3DFF] text-white" : ""
-                } px-4 p-2 rounded-md`}
+                className={`border border-[#8B3DFF] ${plan === 2 ? "bg-[#8B3DFF] text-white" : ""
+                  } px-4 p-2 rounded-md`}
               >
                 Pay per Use
               </button>
@@ -151,9 +146,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Access to essential VR Design Tools</p>
@@ -169,9 +164,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Standard Support for Technical Assitance</p>
@@ -179,11 +174,10 @@ export default function Home() {
                     <button
                       id={1}
                       onClick={handleSubscription}
-                      className={`border rounded-full p-1 px-6 ${
-                        subscription !== 1
+                      className={`border rounded-full p-1 px-6 ${subscription !== 1
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 1}
                     >
                       {subscription === 1 ? "Current Plan" : "Choose Plan"}
@@ -214,9 +208,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Access to essential VR Design Tools</p>
@@ -232,9 +226,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Enhanced Support with Priority Response</p>
@@ -250,9 +244,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Customization Options</p>
@@ -268,9 +262,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Regular Updates</p>
@@ -278,11 +272,10 @@ export default function Home() {
                     <button
                       id={2}
                       onClick={handleSubscription}
-                      className={`bg-[#8B3DFF] rounded-full p-1 px-6 ${
-                        subscription !== 2
+                      className={`bg-[#8B3DFF] rounded-full p-1 px-6 ${subscription !== 2
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 2}
                     >
                       {subscription === 2 ? "Current Plan" : "Choose Plan"}
@@ -313,9 +306,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Complete Access</p>
@@ -331,9 +324,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Priority Support</p>
@@ -349,9 +342,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Advanced Analytics</p>
@@ -367,9 +360,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Regular Updates</p>
@@ -377,11 +370,10 @@ export default function Home() {
                     <button
                       id={3}
                       onClick={handleSubscription}
-                      className={`border rounded-full p-1 px-6 ${
-                        subscription !== 3
+                      className={`border rounded-full p-1 px-6 ${subscription !== 3
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 3}
                     >
                       {subscription === 3 ? "Current Plan" : "Choose Plan"}
@@ -418,9 +410,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>In-depth Analysis of requirements</p>
@@ -436,9 +428,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Strategies for tailored VR module designs</p>
@@ -446,11 +438,10 @@ export default function Home() {
                     <button
                       id={4}
                       onClick={handleSubscription}
-                      className={`border rounded-full p-1 px-6 ${
-                        subscription !== 4
+                      className={`border rounded-full p-1 px-6 ${subscription !== 4
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 4}
                     >
                       {subscription === 4 ? "Current Plan" : "Choose Plan"}
@@ -483,9 +474,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Re-developing and crafting existing tools</p>
@@ -501,9 +492,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Creating new tools for unique needs</p>
@@ -519,9 +510,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Flexible Design Framework</p>
@@ -530,11 +521,10 @@ export default function Home() {
                     <button
                       id={5}
                       onClick={handleSubscription}
-                      className={`bg-[#8B3DFF] rounded-full p-1 px-6 ${
-                        subscription !== 5
+                      className={`bg-[#8B3DFF] rounded-full p-1 px-6 ${subscription !== 5
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 5}
                     >
                       {subscription === 5 ? "Current Plan" : "Choose Plan"}
@@ -565,9 +555,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Cross Platform Compatibility</p>
@@ -583,9 +573,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Data Security and Privacy Compliance</p>
@@ -601,9 +591,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>CDN Integration</p>
@@ -612,11 +602,10 @@ export default function Home() {
                     <button
                       id={6}
                       onClick={handleSubscription}
-                      className={`border rounded-full p-1 px-6 ${
-                        subscription !== 6
+                      className={`border rounded-full p-1 px-6 ${subscription !== 6
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 6}
                     >
                       {subscription === 6 ? "Current Plan" : "Choose Plan"}
@@ -651,9 +640,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Access to essential VR Design Tools</p>
@@ -669,9 +658,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Standard Support for Technical Assitance</p>
@@ -679,11 +668,10 @@ export default function Home() {
                     <button
                       id={7}
                       onClick={handleSubscription}
-                      className={`border rounded-full p-1 px-6 ${
-                        subscription !== 7
+                      className={`border rounded-full p-1 px-6 ${subscription !== 7
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 7}
                     >
                       {subscription === 7 ? "Current Plan" : "Choose Plan"}
@@ -714,9 +702,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Access to essential VR Design Tool</p>
@@ -732,9 +720,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Enhanced Support with Priority Response</p>
@@ -750,9 +738,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Customization Options</p>
@@ -768,9 +756,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#ffffff"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Regular Updates</p>
@@ -778,11 +766,10 @@ export default function Home() {
                     <button
                       id={8}
                       onClick={handleSubscription}
-                      className={`bg-[#8B3DFF] rounded-full p-1 px-6 ${
-                        subscription !== 8
+                      className={`bg-[#8B3DFF] rounded-full p-1 px-6 ${subscription !== 8
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 8}
                     >
                       {subscription === 8 ? "Current Plan" : "Choose Plan"}
@@ -813,9 +800,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Complete Access</p>
@@ -831,9 +818,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Priority Support</p>
@@ -849,9 +836,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Advanced Analytics</p>
@@ -867,9 +854,9 @@ export default function Home() {
                         <path
                           d="M1 3.45688L3.65013 6.58655L8.31544 1.07701"
                           stroke="#111727"
-                          stroke-width="1.24362"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeWidth="1.24362"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
                       </svg>
                       <p>Regular Updates</p>
@@ -877,11 +864,10 @@ export default function Home() {
                     <button
                       id={9}
                       onClick={handleSubscription}
-                      className={`border rounded-full p-1 px-6 ${
-                        subscription !== 9
+                      className={`border rounded-full p-1 px-6 ${subscription !== 9
                           ? "cursor-pointer"
                           : "cursor-not-allowed opacity-50"
-                      }`}
+                        }`}
                       disabled={subscription === 9}
                     >
                       {subscription === 9 ? "Current Plan" : "Choose Plan"}

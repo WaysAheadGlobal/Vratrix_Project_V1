@@ -56,7 +56,6 @@ export default function Navbar() {
     try {
       const userIdCookie = Cookies.get("user_id");
       const uid = decodeURIComponent(userIdCookie);
-      console.log(uid);
       const userDisplay = await api.get(`/userdata/${uid}`);
       setUser(userDisplay.data[0]);
     } catch (error) {
@@ -65,122 +64,125 @@ export default function Navbar() {
   };
 
   return (
-    <>
-      <div>
-        <div className="fixed z-50 translate-y-10  w-full ">
-          <div className=" rounded-full bg-white h-14 flex justify-center overflow-hidden items-center md:mx-20 shadow-md">
-            <div className="flex md:w-full justify-between items-center md:pl-6 px-0">
-              <Link to="/">
-                <img src={logo} className="h-12"></img>
-              </Link>
-              <div className="md:flex space-x-9  items-center ">
-                <Link
-                  to="/"
-                  className="hidden md:block font-raleway hover:text-[#3466AA] focus:text-[#3466AA] font-light text-sm transition-all"
-                >
-                  About Us
-                </Link>
-                <Link
-                  to="/"
-                  className="hidden md:block font-raleway hover:text-[#3466AA] focus:text-[#3466AA] font-light text-sm transition-all "
-                >
-                  Features
-                </Link>
-                <Link
-                  to="/plans"
-                  className="hidden md:block font-raleway hover:text-[#3466AA] focus:text-[#3466AA] font-light text-sm transition-all "
-                >
-                  Plans
-                </Link>
-                <Link
-                  to="/"
-                  className="hidden md:block font-raleway hover:text-[#3466AA] focus:text-[#3466AA] font-light text-sm transition-all "
-                >
-                  Our Team
-                </Link>
-                <button
-                  className="md:hidden"
-                  onClick={() => setIsExpanded((prev) => !prev)}
-                >
-                  <img src={burger} className=""></img>
-                </button>
-              </div>
-              {isLoggedIn ? (
-                <div className="flex items-center font-raleway bg-[#8B3DFF] font-light rounded-full px-7 h-[44px] m-[10px] text-white">
-                  {fullname}
-                </div>
-              ) : (
-                <Link
-                  to="/log-in"
-                  className="flex items-center font-raleway bg-[#8B3DFF] font-light rounded-full px-7 h-[44px] m-[10px] text-white"
-                >
-                  Login/Signup
-                </Link>
-              )}
+    <div>
+      <div className="fixed z-50 translate-y-10  w-full ">
+        <div className=" rounded-full bg-white h-14 flex justify-center overflow-hidden items-center md:mx-20 shadow-md">
+          <div className="flex md:w-full justify-between items-center md:pl-6 px-0">
+            <Link to="/">
+              <img src={logo} className="h-12"></img>
+            </Link>
+            <div className="md:flex space-x-9  items-center ">
+              <a
+                href="/#about"
+                className="hidden md:block font-raleway font-semibold hover:text-[#3466AA] focus:text-[#3466AA] text-sm transition-all"
+              >
+                About Us
+              </a>
+              <a
+                href="/#features"
+                className="hidden md:block font-raleway font-semibold hover:text-[#3466AA] focus:text-[#3466AA] text-sm transition-all "
+              >
+                Features
+              </a>
+              <a
+                href="/#plans"
+                className="hidden md:block font-raleway font-semibold hover:text-[#3466AA] focus:text-[#3466AA] text-sm transition-all "
+              >
+                Plans
+              </a>
+              <a
+                href="/#teams"
+                className="hidden md:block font-raleway font-semibold hover:text-[#3466AA] focus:text-[#3466AA] text-sm transition-all "
+              >
+                Our Team
+              </a>
+              <button
+                className="md:hidden"
+                onClick={() => setIsExpanded((prev) => !prev)}
+              >
+                <img src={burger} className=""></img>
+              </button>
+              <a
+                href="/#faq"
+                className="hidden md:block font-raleway font-semibold hover:text-[#3466AA] focus:text-[#3466AA] text-sm transition-all "
+              >
+                FAQ
+              </a>
             </div>
-          </div>
-        </div>
-        <div
-          className={`z-20 md:hidden w-full  ${
-            !isExpanded && " translate-x-full"
-          } transition-all duration-300 h-full fixed bg-[#3466AA]`}
-        >
-          <button
-            className="fixed right-0 p-4 "
-            onClick={() => setIsExpanded((prev) => !prev)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              style={{ fill: "white" }}
-            >
-              <path
-                d="M11 0.7H13V23.3H11z"
-                transform="rotate(-45.001 12 12)"
-              ></path>
-              <path
-                d="M0.7 11H23.3V13H0.7z"
-                transform="rotate(-45.001 12 12)"
-              ></path>
-            </svg>
-          </button>
-
-          <div className="items-center h-full justify-center space-y-7 flex flex-col uppercase">
-            <Link
-              to="/"
-              onClick={() => setIsExpanded((prev) => !prev)}
-              className="font-raleway font-light text-white text-2xl"
-            >
-              Home
-            </Link>
-            <Link
-              to="/"
-              onClick={() => setIsExpanded((prev) => !prev)}
-              className="font-raleway font-light text-white text-2xl"
-            >
-              Services
-            </Link>
-            <Link
-              to="/"
-              onClick={() => setIsExpanded((prev) => !prev)}
-              className="font-raleway font-light text-white text-2xl"
-            >
-              Contact Us
-            </Link>
-            <Link
-              to="/"
-              onClick={() => setIsExpanded((prev) => !prev)}
-              className="font-raleway font-light text-white text-2xl"
-            >
-              About Us
-            </Link>
+            {isLoggedIn ? (
+              <Link to="/dashboard" className="flex items-center font-raleway bg-[#8B3DFF] rounded-full px-7 h-[44px] m-[10px] text-white">
+                {fullname}
+              </Link>
+            ) : (
+              <Link
+                to="/log-in"
+                className="flex items-center font-raleway bg-[#8B3DFF] rounded-full px-7 h-[44px] m-[10px] text-white"
+              >
+                Login/Signup
+              </Link>
+            )}
           </div>
         </div>
       </div>
-    </>
+      <div
+        className={`z-20 md:hidden w-full  ${!isExpanded && " translate-x-full"
+          } transition-all duration-300 h-full fixed bg-[#3466AA]`}
+      >
+        <button
+          className="fixed right-0 p-4 "
+          onClick={() => setIsExpanded((prev) => !prev)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            style={{ fill: "white" }}
+          >
+            <path
+              d="M11 0.7H13V23.3H11z"
+              transform="rotate(-45.001 12 12)"
+            ></path>
+            <path
+              d="M0.7 11H23.3V13H0.7z"
+              transform="rotate(-45.001 12 12)"
+            ></path>
+          </svg>
+        </button>
+
+        <div className="items-center h-full justify-center space-y-7 flex flex-col uppercase">
+          <Link
+            to="/"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            Home
+          </Link>
+          <Link
+            to="/"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            Services
+          </Link>
+          <Link
+            to="/"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            Contact Us
+          </Link>
+          <Link
+            to="/"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            About Us
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
