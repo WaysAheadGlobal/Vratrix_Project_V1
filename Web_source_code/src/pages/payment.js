@@ -178,7 +178,7 @@ const Payment = () => {
                         type="text"
                         id="expiryDate"
                         placeholder=""
-                        value={expiryDate}
+                        value={expiryDate.month}
                         onChange={(e) => setExpiryDate(prev => ({ ...prev, month: e.target.value }))}
                         className="w-14 sm:w-20 border rounded-lg p-2"
                         required
@@ -188,7 +188,7 @@ const Payment = () => {
                         type="text"
                         id="expiryDate"
                         placeholder=""
-                        value={expiryDate}
+                        value={expiryDate.year}
                         onChange={(e) => setExpiryDate(prev => ({ ...prev, year: e.target.value }))}
                         className="w-14 sm:w-20 border rounded-lg p-2"
                         required

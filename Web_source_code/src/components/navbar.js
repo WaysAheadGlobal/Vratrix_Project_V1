@@ -65,7 +65,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="fixed z-50 translate-y-10  w-full ">
+      <div className="fixed z-50 translate-y-10 w-full">
         <div className=" rounded-full bg-white h-14 flex justify-center overflow-hidden items-center md:mx-20 shadow-md">
           <div className="flex md:w-full justify-between items-center md:pl-6 px-0">
             <Link to="/">
@@ -125,11 +125,11 @@ export default function Navbar() {
         </div>
       </div>
       <div
-        className={`z-20 md:hidden w-full  ${!isExpanded && " translate-x-full"
+        className={`md:hidden w-full z-[60]  ${!isExpanded && " translate-x-full"
           } transition-all duration-300 h-full fixed bg-[#3466AA]`}
       >
         <button
-          className="fixed right-0 p-4 "
+          className="fixed right-4 top-4"
           onClick={() => setIsExpanded((prev) => !prev)}
         >
           <svg
@@ -160,27 +160,41 @@ export default function Navbar() {
           >
             Home
           </Link>
-          <Link
-            to="/"
-            onClick={() => setIsExpanded((prev) => !prev)}
-            className="font-raleway text-white text-2xl"
-          >
-            Services
-          </Link>
-          <Link
-            to="/"
-            onClick={() => setIsExpanded((prev) => !prev)}
-            className="font-raleway text-white text-2xl"
-          >
-            Contact Us
-          </Link>
-          <Link
-            to="/"
+          <a
+            href="/#about"
             onClick={() => setIsExpanded((prev) => !prev)}
             className="font-raleway text-white text-2xl"
           >
             About Us
-          </Link>
+          </a>
+          <a
+            href="/#features"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            Features
+          </a>
+          <a
+            href="/#plans"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            Plans
+          </a>
+          <a
+            href="/#teams"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            Our Team
+          </a>
+          <a
+            href="/#faq"
+            onClick={() => setIsExpanded((prev) => !prev)}
+            className="font-raleway text-white text-2xl"
+          >
+            FAQ
+          </a>
         </div>
       </div>
     </div>

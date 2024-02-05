@@ -31,7 +31,7 @@ function Line() {
 
 function LineLeft() {
   return (
-    <svg width="1163" height="24" viewBox="0 0 1163 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="100%" height="24" viewBox="0 0 1163 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M1143 24L0 24V0L1163 0L1143 24Z" fill="#2F8FC0" />
     </svg>
   )
@@ -198,7 +198,7 @@ export default function Home() {
             </span>
             <div id="features" className="py-16 flex flex-col items-center space-y-10 text-center bg-[#000325]">
               <h2 className="font-custom1 text-[48px] text-white">Features</h2>
-              <p className="font-custom w-[700px] font-light text-lg text-white">
+              <p className="font-custom max-w-[700px] font-light text-lg text-white">
                 Discover Exceptional Features: Elevate Your Experience with
                 Cutting-Edge Functionality and Unmatched Performance!
               </p>
@@ -1223,9 +1223,9 @@ export default function Home() {
                 </AccordionDetails>
               </Accordion>
             </div>
-            <div className="self-start mt-10">
+            <span className="self-start mt-10 ">
               <LineLeft />
-            </div>
+            </span>
           </section>
           <div className="p-10 ">
             <div className="hidden md:block pt-24 relative">
