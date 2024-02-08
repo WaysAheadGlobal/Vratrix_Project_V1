@@ -1,8 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
 import { FaLocationDot } from "react-icons/fa6";
-import { PiPhoneCallFill } from "react-icons/pi";
 import { MdEmail } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 export default function footer() {
   return (
@@ -108,16 +107,11 @@ export default function footer() {
             <h2 className='font-raleway  text-white '>Contact Us</h2>
             <h3 className='text-white text md:block font-raleway hover:text-[#ffffffc5] focus:text-[#ffffffc5]  text-sm transition-all'>
               <FaLocationDot className='inline text-xl mr-2' />              
-              2366 Merton Street,
-              Toronto
-              Canada</h3>
+              2025 WILLINGDON AVENUE, SUITE 900 BURNABY BC V5C 0J3 CANADA</h3>
             <h3 className='text-white md:block font-raleway hover:text-[#ffffffc5] focus:text-[#ffffffc5]  text-sm transition-all'>
               <MdEmail className='inline text-xl mr-2' />
-              connect@vratrix.com
+              ceo@vratrix.ca
             </h3>
-            <h3 className='text-white md:block font-raleway hover:text-[#ffffffc5] focus:text-[#ffffffc5]  text-sm transition-all '>
-              <PiPhoneCallFill className='inline text-xl mr-2' />
-              +1-416-839-6023</h3>
           </div>
         </div>
       </div>

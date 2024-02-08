@@ -20,6 +20,8 @@ import img2 from "../images/image 41.png";
 import plan1 from "../images/plan1.png";
 import plan2 from "../images/plan2.png";
 import "../style/main.css";
+import founder3 from '../images/founder3.jpg';
+import TeamCard from "../components/TeamCard.jsx";
 
 function Line() {
   return (
@@ -1049,43 +1051,39 @@ export default function Home() {
               </div>
             )}
           </div>
-          <div className="md:px-40 py-12  bg-[#000325] text-center md:text-left justify-center md:space-x-12 md:flex">
+          <div className="bg-[#000325] py-12 px-12 md:px-24 flex flex-col gap-8 md:text-left justify-center">
             <div
               id="teams"
-              className="justify-top  flex flex-col md:pr-32  md:mx-10"
+              className="justify-top flex flex-col text-center"
               data-aos="fade-right"
             >
-              <h2 className="font-custom1 text-[38px] md:text-[38px] text-white md:leading-[80px] py-3">
+              <h2 className="font-custom1 text-[38px] text-white">
                 Our Team
               </h2>
-              <p className="font-custom1 leading-6 text-[20px] px-8 md:px-0  font-light  text-justify  text-[#C9BBBB] ">
+              <p className="font-custom1 mt-2 text-[20px] px-8 md:px-0 text-[#C9BBBB] ">
                 Get Acquainted with the Passionate Individuals Dedicated to
                 Enhancing Your Vratrix Experience.
               </p>
             </div>
-            <div className="flex md:space-x-6 space-x-3">
-              <div className="flex flex-col justify-center text-center  md:bg-[#8B3DFF] rounded-md overflow-hidden">
-                <img
-                  src={img2}
-                  className="md:h-full  w-[360px] mt-32 md:mt-0  object-cover"
-                  data-aos="fade-in"
-                ></img>
-                <h2 className="text-white pt-1 font-bold">Thu Chau <br /> Hoang</h2>
-                <p className="text-white text-sm pb-2 font-thin">
-                  Co-Founder & CEO
-                </p>
-              </div>
-              <div className="flex flex-col justify-center text-center md:bg-[#8B3DFF] rounded-md overflow-hidden">
-                <img
-                  src={img3}
-                  className="md:h-full w-[360px] mt-32 md:mt-0  object-cover"
-                  data-aos="fade-in"
-                ></img>
-                <h2 className="text-white pt-1 font-bold">Bao Hoang <br /> Nguyen</h2>
-                <p className="text-white text-sm pb-2 font-thin">
-                  Co-Founder & CEO
-                </p>
-              </div>
+            <div className="flex gap-4 mt-8 flex-col md:!flex-row items-start justify-between">
+              <TeamCard
+                name={"Thu Chau Hoang"}
+                role={"Co-Founder & COO"}
+                image={img2}
+                info={["Over 25 years of experience in executive leadership roles for NovaGroup and No Va Land - a leading prestigious brand in the real estate investment and development industry in Vietnam.", "Currently working as the CEO for NovaGroup Joint Stock Company; oversees strategy development and stakeholder relations for No Va Metaverse subsidiary (VR applications).", "Experience includes operations management, performance optimization, and asset management.", "MBA from University of Applied Sciences and Arts North-Western Switzerland; CEO and CFO certificates from PACE Institute of Leadership and Management."]}
+              />
+              <TeamCard
+                name={"Bao Hoang Nguyen"}
+                role={"Co-Founder & CEO"}
+                image={img3}
+                info={["Engineer, Strategic Planner, Leader, and Motivator", "20+ years' experience in the hydro power industry with the last 15 years in leadership roles for a leading power engineer and consulting company in Vietnam.", "Extensive experience in business development, as well as developing corporate investment strategies and building relationships with potential investors.", "MBA from Bach Khoa University; Geology and Petroleum Engineering Degree from Bach Khoa Technical University"]}
+              />
+              <TeamCard
+                name={"Thi Hang Nguyen"}
+                role={"Co-Founder & CFO"}
+                image={founder3}
+                info={["Seasoned and results-driven finance and accounting executive with over 20 years of progressive leadership experience.", "Excels at developing and implementing financial strategies, identifying, and mitigating risks, and cultivating positive relationships with stakeholders, clients and government officials.", "Committed to achieving exceptional financial results by reviewing, verifying, and managing procedures and compliance measures.", "BA in Finance and Economics from the University of Economics, Vietnam."]}
+              />
             </div>
           </div>
 
@@ -1114,21 +1112,13 @@ export default function Home() {
                 >
                   <Typography className="ac_head_cont ">
                     <p className="font-semibold">
-                      1. What distinguishes VR simulations from traditional
-                      training methods and how do they enhance learning
-                      experiences ?
+                      1. How does Vratrix platform cater to the specific needs of the power sector?
                     </p>
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails className="ac_bdy">
                   <Typography className="ac_bdy_cont">
-                    VR simulations offer immersive, interactive environments that
-                    replicate real-world scenarios. Unlike traditional methods,
-                    they provide hands-on experiences, fostering better retention,
-                    engagement, and practical skill development. Users can
-                    navigate and interact within a virtual setting, creating a
-                    dynamic learning environment that significantly enhances the
-                    effectiveness of training programs.
+                    Vratrix platform is designed with a deep understanding of the power sector's unique challenges and requirements. We offer tools to design customizable modules and scenario designs tailored to address the intricacies of power grid maintenance, equipment handling, emergency response, and regulatory compliance within the industry.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -1145,20 +1135,13 @@ export default function Home() {
                 >
                   <Typography className="ac_head_cont">
                     <p className="font-semibold">
-                      2. How will the training modules work and will they be
-                      interactive ?
+                      2. How can one integrate Vratrix platform into our existing training programs?
                     </p>
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails className="ac_bdy">
                   <Typography className="ac_bdy_cont">
-                    You can often tour models of factory-built homes at
-                    dealerships, showrooms, or manufacturers' facilities. Contact
-                    the manufacturer or dealership associated with the model
-                    you're interested in to inquire about available locations for
-                    tours or showings. Many companies also participate in home
-                    expos or trade shows where they display their models for
-                    public viewing.
+                    Integrating Vratrix platform into your existing programs is seamless. Our platform offers flexible deployment options and supports internal distribution channels, allowing businesses to easily incorporate VR modules into their training curriculum. Furthermore, our team provides comprehensive onboarding, technical support, and ongoing assistance to ensure a smooth integration process for your organization.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -1175,50 +1158,13 @@ export default function Home() {
                 >
                   <Typography className="ac_head_cont">
                     <p className="font-semibold">
-                      3. How to collaborate with other trainers ?
+                      3.  What sets your platform apart from other VR training solutions on the market?
                     </p>
                   </Typography>
                 </AccordionSummary>
                 <AccordionDetails className="ac_bdy">
                   <Typography className="ac_bdy_cont">
-                    Factory-built homes are usually not designed to be placed in
-                    basements due to their construction and transportation
-                    methods. Their structure isn't typically conducive to basement
-                    installation. Site-built homes are more adaptable for basement
-                    construction, offering designs that can integrate with
-                    basement foundations during on-site building.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-
-              <Accordion
-                className="ac_item"
-                expanded={expanded === "panel5"}
-                onChange={handleChange("panel5")}
-              >
-                <AccordionSummary
-                  className="ac_head"
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel5bh-content"
-                  id="panel5bh-header"
-                >
-                  <Typography className="ac_head_cont">
-                    <p className="font-semibold">
-                      4. What is the process of making modules ?
-                    </p>
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails className="ac_bdy">
-                  <Typography className="ac_bdy_cont">
-                    Factory-built homes are constructed in controlled
-                    environments, then transported and assembled on-site, offering
-                    faster, standardized construction. However site-built homes
-                    offer limitless customization, allowing owners to create
-                    unique designs. They promote local employment, fostering
-                    community ties and craftsmanship. Their on-site construction
-                    process enables adaptation to specific needs, and they often
-                    showcase higher architectural complexity and individuality,
-                    reflecting personal preferences and creativity.
+                    Our platform stands out for its advanced collaborative design capabilities, allowing corporate teams to actively participate in scenario creation and adaptive learning strategies. Additionally, our extensive library of industry-specific assets, customizable templates, and real-time testing features ensure a highly immersive and effective training experience for power sector professionals.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
